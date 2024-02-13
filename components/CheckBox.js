@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 
-const CustomCheckbox = ({ label, isChecked, onChange }) => {
+const Checkbox = ({ isChecked, onChange }) => {
   return (
     <TouchableOpacity
       onPress={() => onChange(!isChecked)}
-      style={{ flexDirection: 'row', alignItems: 'center' }}
     >
       <View
         style={{
-          width: 20,
-          height: 20,
+          width: 24,
+          height: 24,
+          borderRadius: 20,
           borderWidth: 1,
-          borderColor: isChecked ? 'blue' : 'gray',
+          backgroundColor: isChecked ? '#0AB6AB' : null,
+          borderColor: '#0AB6AB',
           marginRight: 10,
           alignItems: 'center',
           justifyContent: 'center',
@@ -21,17 +22,19 @@ const CustomCheckbox = ({ label, isChecked, onChange }) => {
         {isChecked && (
           <Text
             style={{
-              color: isChecked ? 'blue' : 'gray',
+              fontSize: 15,
+              marginBottom: 4,
+              color: isChecked ? 'white' : 'gray',
             }}
           >
             ✓
           </Text>
         )}
       </View>
-      <Text>{label}</Text>
-    </TouchableOpacity>
+    </TouchableOpacity >
   );
 };
 
 
-export default CustomCheckbox;
+export default Checkbox;
+
