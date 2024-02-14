@@ -1,13 +1,24 @@
 import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
-const AddNewToDo = () => {
-    const [toDo, settoDo] = useState('');
+const AddNewToDo = (props) => {
+
+    const [title, setTitle] = useState('');
+
+    const handleAddTodo = () => {
+        if (title) {
+            props.addTodo(title.trim());
+            setTitle('');
+        }
+        else {
+            return
+        }
+    };
 
     return (
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <TextInput style={styles.input} value={toDo} onChangeText={settoDo} placeholder="Add your task" />
-            <Pressable style={styles.button}>
+            <TextInput style={styles.input} value={title} onChangeText={setTitle} placeholder="Add your task" />
+            <Pressable onPress={handleAddTodo} style={styles.button}>
                 <Text style={styles.buttonText}>Add</Text>
             </Pressable>
         </View>
